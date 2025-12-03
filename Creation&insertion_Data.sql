@@ -1,3 +1,7 @@
+CREATE database projetsql;
+use projetsql; 
+
+
 -- creation table category
 CREATE TABLE category (
     id_cat INT AUTO_INCREMENT PRIMARY KEY,
