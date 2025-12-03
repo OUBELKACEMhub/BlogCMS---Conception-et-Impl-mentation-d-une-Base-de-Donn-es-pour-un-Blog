@@ -92,10 +92,40 @@ where email like  "@gmail.com"
 
 --Niveau 4 : Fonctions d'Agrégation
 
---Compter le nombre total d'articles publiés
-
+--13. COUNT() - Statistique articles
 
 select count(*)
 from postes 
 where statu="published"
 
+--14. COUNT() avec GROUP BY - Articles par catégorie
+--Compter le nombre d'articles par catégorie
+SELECT c.nom_cat, COUNT(*) AS nb_articles
+FROM postes p
+JOIN category c ON p.id_cat = c.id_cat
+GROUP BY c.nom_cat;
+
+
+--15. AVG() - Longueur moyenne des articles
+
+SELECT AVG(CHAR_LENGTH(content)) AS longueur_moyenne
+FROM postes
+WHERE statu = 'published';
+
+
+
+
+--16. MAX()/MIN() - Dates extrêmes
+
+SELECT MAX(date_cr) AS date_dernier_article
+FROM postes
+WHERE statu = 'published';
+
+SELECT MIN(date_cr) AS date_premier_commentaire
+FROM comments;
+
+
+-- 17. SUM() - Total des vues
+
+SELECT SUM(view_count) AS total_vues
+FROM postes;
